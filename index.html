@@ -2,31 +2,25 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Ir a mi tienda Etsy</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        text-align: center;
-        padding: 50px;
-        background-color: #fff0f5;
+    <title>Abriendo Etsy...</title>
+    <script>
+      function openEtsyApp() {
+        const now = new Date().getTime();
+        // Intentar abrir la app de Etsy
+        window.location = "etsy://shop/imaraartshop";
+
+        // Después de 1.5 segundos, redirige al navegador si no pasó nada
+        setTimeout(() => {
+          const later = new Date().getTime();
+          if (later - now < 2000) {
+            // Redirigir al navegador por defecto con el enlace web
+            window.location = "https://www.etsy.com/shop/imaraartshop";
+          }
+        }, 1500);
       }
-      a {
-        display: inline-block;
-        padding: 15px 25px;
-        margin: 10px;
-        font-size: 18px;
-        border-radius: 10px;
-        background-color: #f26b83;
-        color: white;
-        text-decoration: none;
-      }
-    </style>
+    </script>
   </head>
-  <body>
-    <h1>✨ Visita mi tienda ImaraArtShop ✨</h1>
-    <p>¿Tienes la app de Etsy?</p>
-    <a href="etsy://shop/imaraartshop">Abrir en la app</a>
-    <p>¿No tienes la app?</p>
-    <a href="https://www.etsy.com/shop/imaraartshop">Ver en navegador</a>
+  <body onload="openEtsyApp()">
+    <p>Intentando abrir la app de Etsy...</p>
   </body>
 </html>
