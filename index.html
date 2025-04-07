@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title>Redirect to Etsy...</title>
-    <meta http-equiv="refresh" content="2;url=https://imaraartshop.etsy.com" />
+    <meta charset="UTF-8" />
+    <title>Abriendo Etsy...</title>
     <script>
-      window.location = "etsy://shop/imaraartshop";
-      setTimeout(function () {
-        window.location = "https://imaraartshop.etsy.com";
-      }, 100);
+      function openEtsyApp() {
+        const now = new Date().getTime();
+        // Intentar abrir la app de Etsy
+        window.location = "etsy://shop/imaraartshop";
+
+        // Después de 1.5 segundos, redirige al navegador si no pasó nada
+        setTimeout(() => {
+          const later = new Date().getTime();
+          if (later - now < 2000) {
+            // Redirigir al navegador por defecto con el enlace web
+            window.location = "https://www.etsy.com/shop/imaraartshop";
+          }
+        }, 1500);
+      }
     </script>
   </head>
-  <body>
-    <p>Opening Etsy...</p>
+  <body onload="openEtsyApp()">
+    <p>Intentando abrir la app de Etsy...</p>
   </body>
 </html>
